@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service-deployment
+spec:
+  replicas: 2  # Number of pods
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+      - name: product-service
+        image: mercysakah/product_service:1.0  # Replace with your Docker Hub image name and tag
+        ports:
+        - containerPort: 8001  # The port exposed by the container
